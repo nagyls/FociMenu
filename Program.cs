@@ -42,28 +42,6 @@ namespace Focimeccs
                 {
                     break;
                 }
-
-
-
-                /*
-                int kerdes = -1;
-                while (kerdes != 1 && kerdes != 0)
-                {
-                    kerdes = Menu.BeolvasSzam("Szeretnél újabb meccset felvinni? (0/1): ");
-                    if (kerdes != 1 && kerdes != 0)
-                    {
-                        Console.WriteLine("Hiba! Választható opciók: 0/1");
-                    }
-                }
-
-                if (kerdes == 1)
-                {
-                    continue;
-                } else if (kerdes == 0)
-                {
-                    break;
-                }
-                */
             }
         }
     }
