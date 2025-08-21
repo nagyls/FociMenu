@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Security.Permissions;
 
 namespace Focimeccs
 {
@@ -20,6 +21,11 @@ namespace Focimeccs
         }
         public static List<Meccs> FileBeolvas()
         {
+            if(!File.Exists("foci.txt"))
+            {
+                return new List<Meccs>();
+            }
+            
             List<Meccs> meccsek = new List<Meccs>();
             string[] lines = File.ReadAllLines("foci.txt", Encoding.UTF8);
             for (int i = 0; i < lines.Length; i++)

@@ -18,8 +18,9 @@ namespace Focimeccs
             Console.WriteLine("   4. Tabella megtekintése (Hamarosan)");
             Console.WriteLine("   5. Egy meccs törlése");
             Console.WriteLine("   6. Összes meccs törlése");
+            Console.WriteLine("   7. Kilépés");
             Console.WriteLine("----------------------------------------");
-            int selected = BeolvasSzam("Válassz a megadott opciók közül: ", 1, 6);
+            int selected = BeolvasSzam("Válassz a megadott opciók közül: ", 1, 7);
             return selected;
         }
         

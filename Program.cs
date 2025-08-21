@@ -32,6 +32,15 @@ namespace Focimeccs
                 } else if (selected == 4)
                 {
                     Console.WriteLine("Javítás alatt.");
+                } else if (selected == 5) 
+                {
+                    Meccs.EgyMeccsTorles();
+                } else if (selected == 6)
+                {
+                    Meccs.OsszesMeccsTorles();
+                } else
+                {
+                    break;
                 }
 
 
