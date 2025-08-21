@@ -10,6 +10,7 @@ namespace Focimeccs
     {
         public static int ShowMenu()
         {
+            Console.Clear();
             Console.WriteLine("\t\tMenu");
             Console.WriteLine("---------------------------------------");
             Console.WriteLine("   1. Meccs hozzáadása");
@@ -19,8 +20,9 @@ namespace Focimeccs
             Console.WriteLine("   5. Egy meccs törlése");
             Console.WriteLine("   6. Összes meccs törlése");
             Console.WriteLine("   7. Kilépés");
-            Console.WriteLine("----------------------------------------");
-            int selected = BeolvasSzam("Válassz a megadott opciók közül: ", 1, 7);
+            Console.WriteLine("---------------------------------------");
+            int selected = BeolvasSzam(" Válassz a megadott opciók közül: ", 1, 7);
+            Console.WriteLine();
             return selected;
         }
         
@@ -58,6 +60,12 @@ namespace Focimeccs
                     Console.WriteLine("Hiba! Számot adj meg.");
                 }
             }
+        }
+        public static void Folytatas()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Nyomj egy gombot a folytatáshoz.");
+            Console.ReadKey();
         }
     }
 }

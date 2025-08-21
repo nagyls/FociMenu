@@ -58,24 +58,31 @@ namespace Focimeccs
         {
             Console.WriteLine($"Ennyi meccs lett lementve: {listaMeccsek.Count}");
 
-            Console.WriteLine();
             for (int i = 0; i < listaMeccsek.Count; i++)
             {
                 Console.Write($"{i + 1}. meccs eredménye: ");
                 listaMeccsek[i].Print();
             }
+            Menu.Folytatas();
         }
 
 
         public static void MeccsKereses()
         {
-            Console.WriteLine("Melyik csapat meccsét szeretnéd megnézni?");
             List<string> csapatok = Csapatok(listaMeccsek);
+            if (csapatok.Count == 0)
+            {
+                Console.WriteLine("Hiba! Jelenleg nincs elérhető csapat.");
+                Menu.Folytatas();
+                return;
+            }
+            Console.WriteLine("Melyik csapat meccsét szeretnéd megnézni?");
             for (int i = 0; i < csapatok.Count; i++)
             {
                 Console.WriteLine(csapatok[i]);
             }
             Console.WriteLine();
+            
             while (true)
             {
                 Console.Write("Írd le melyik csapatnak az eredményeit szeretnéd megnézni: ");
@@ -83,6 +90,7 @@ namespace Focimeccs
                 if (!csapatok.Contains(csapatNev))
                 {
                     Console.WriteLine("Hiba! Ilyen csapat nincsen a felsoroltak között.");
+                    Menu.Folytatas(); ;
                 }
                 else
                 {
@@ -91,6 +99,7 @@ namespace Focimeccs
                         if (listaMeccsek[i].csapat1 == csapatNev || listaMeccsek[i].csapat2 == csapatNev)
                         {
                             listaMeccsek[i].Print();
+                            Menu.Folytatas();
                         }
                     }
                     break;
@@ -101,50 +110,59 @@ namespace Focimeccs
 
         public static void EgyMeccsTorles()
         {
-            Console.WriteLine();
-            Console.WriteLine("---------------------------------");
+            if (listaMeccsek.Count == 0)
+            {
+                Console.WriteLine("Hiba! Jelenleg nincs egyetlen meccs sem.");
+                Menu.Folytatas();
+                return;
+            }
             Console.WriteLine("Meccsek:");
-            Console.WriteLine();
             for (int i = 0; i < listaMeccsek.Count; i++)
             {
                 Console.Write($"{i + 1}. meccs: ");
                 listaMeccsek[i].Print();
             }
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine();
             int valasz = Menu.BeolvasSzam("Melyik meccset szeretnéd törölni(0 = Mégsem): ", 0, listaMeccsek.Count);
             if (valasz == 0)
             {
+                Menu.Folytatas();
                 return;
             }
-            int kerdes = Menu.BeolvasSzam("Biztos vagy benne, hogy törlöd ezt a meccset? (Nem=0/Igen=1): ", 0, 1);
+            Console.WriteLine();
+            Meccs meccs = listaMeccsek[valasz - 1];
+            int kerdes = Menu.BeolvasSzam($"Biztos vagy benne, hogy törölni szeretnéd a {meccs.csapat1} - {meccs.csapat2} meccsét? (Nem=0/Igen=1): ", 0, 1);
             if (kerdes == 1)
             {
-                listaMeccsek.Remove(listaMeccsek[valasz - 1]);
+                listaMeccsek.Remove(meccs);
                 FileUtils.FileKiir(listaMeccsek);
+                Console.WriteLine("Sikeresen törölve.");
+                Menu.Folytatas();
             }
         }
 
         public static void OsszesMeccsTorles()
         {
-            Console.WriteLine();
-            Console.WriteLine("---------------------------------");
+            if (listaMeccsek.Count == 0)
+            {
+                Console.WriteLine("Hiba! Jelenleg nincs egyetlen meccs sem.");
+                Menu.Folytatas();
+                return;
+            }
             Console.WriteLine("Meccsek:");
-            Console.WriteLine();
             for (int i = 0; i < listaMeccsek.Count; i++)
             {
                 Console.Write($"{i + 1}. meccs: ");
                 listaMeccsek[i].Print();
             }
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine();
             int kerdes = Menu.BeolvasSzam("Biztos vagy benne, hogy törölni szeretnéd az összes meccset? (Nem=0/Igen=1): ", 0, 1);
             if (kerdes == 1)
             {
                 listaMeccsek.Clear();
                 FileUtils.FileKiir(listaMeccsek);
-            } else
-            {
-                return;
             }
+            Menu.Folytatas();
         }
 
 

@@ -65,9 +65,6 @@ namespace Focimeccs
                 }
                 */
             }
-            
-            
-            Console.ReadKey();
         }
     }
 }
