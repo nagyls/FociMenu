@@ -237,7 +237,7 @@ namespace Focimeccs
                 Console.WriteLine($"   {item.Key,-20} {item.Value.pontok, 2}    {item.Value.gyozelem, 2}    {item.Value.dontetlen, 2}    {item.Value.vereseg,2}");
             }
 
-            Console.ReadKey();
+            Menu.Folytatas();
         }
 
 
