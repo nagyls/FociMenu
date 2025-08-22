@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsapatEredmeny.cs" />
     <Compile Include="FileUtils.cs" />
     <Compile Include="Meccs.cs" />
     <Compile Include="Menu.cs" />

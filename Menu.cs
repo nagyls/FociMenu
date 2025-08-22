@@ -16,7 +16,7 @@ namespace Focimeccs
             Console.WriteLine("   1. Meccs hozzáadása");
             Console.WriteLine("   2. Meccsek listázása");
             Console.WriteLine("   3. Meccs keresése");
-            Console.WriteLine("   4. Tabella megtekintése (Hamarosan)");
+            Console.WriteLine("   4. Tabella megtekintése");
             Console.WriteLine("   5. Egy meccs törlése");
             Console.WriteLine("   6. Összes meccs törlése");
             Console.WriteLine("   7. Kilépés");

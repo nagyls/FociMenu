@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -188,5 +189,57 @@ namespace Focimeccs
             }
             return list;
         }
+
+
+
+        public static void TabellaSzamolas()
+        {
+            Dictionary<string, CsapatEredmeny> tabella = new Dictionary<string, CsapatEredmeny>();
+            
+
+            for (int i = 0; i < listaMeccsek.Count; i++)
+            {
+                Meccs meccs = listaMeccsek[i];
+
+                if (!tabella.ContainsKey(meccs.csapat1))
+                {
+                    tabella[meccs.csapat1] = new CsapatEredmeny(meccs.csapat1);
+                }
+                if (!tabella.ContainsKey(meccs.csapat2))
+                {
+                    tabella[meccs.csapat2] = new CsapatEredmeny(meccs.csapat2);
+                }
+
+                if (meccs.csapat1Gol > meccs.csapat2Gol)
+                {
+                    tabella[meccs.csapat1].pontok += 3;
+                    tabella[meccs.csapat1].gyozelem++;
+                    tabella[meccs.csapat2].vereseg++;
+                } else if (meccs.csapat1Gol < meccs.csapat2Gol)
+                {
+                    tabella[meccs.csapat2].pontok += 3;
+                    tabella[meccs.csapat2].gyozelem++;
+                    tabella[meccs.csapat1].vereseg++;
+                } else
+                {
+                    tabella[meccs.csapat1].pontok += 1;
+                    tabella[meccs.csapat1].dontetlen++;
+                    tabella[meccs.csapat2].pontok += 1;
+                    tabella[meccs.csapat2].dontetlen++;
+                }
+            }
+
+            Console.WriteLine($"   {"Csapat",-20} {"P",-5} {"GY",-5} {"D",-5} V");
+            Console.WriteLine("  -------------------------------------------");
+            
+            foreach (var item in tabella.OrderByDescending(key => key.Value.pontok))
+            {
+                Console.WriteLine($"   {item.Key,-20} {item.Value.pontok, 2}    {item.Value.gyozelem, 2}    {item.Value.dontetlen, 2}    {item.Value.vereseg,2}");
+            }
+
+            Console.ReadKey();
+        }
+
+
     }
 }

@@ -31,7 +31,7 @@ namespace Focimeccs
                     Meccs.MeccsKereses();
                 } else if (selected == 4)
                 {
-                    Console.WriteLine("Javítás alatt.");
+                    Meccs.TabellaSzamolas();
                 } else if (selected == 5) 
                 {
                     Meccs.EgyMeccsTorles();
