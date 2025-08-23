@@ -100,9 +100,9 @@ namespace Focimeccs
                         if (listaMeccsek[i].csapat1 == csapatNev || listaMeccsek[i].csapat2 == csapatNev)
                         {
                             listaMeccsek[i].Print();
-                            Menu.Folytatas();
                         }
                     }
+                    Menu.Folytatas();
                     break;
                 }
             }
